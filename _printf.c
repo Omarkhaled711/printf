@@ -28,11 +28,6 @@ int _printf(const char *format, ...)
 			_putchar(va_arg(formatPtr, int));
 			i++;
 		}
-			else if (format[i + 1] == 'd')
-		{
-			_putchar(va_arg(formatPtr, int));
-			i++;
-		}
 		else if (format[i + 1] == 's')
 		{
 			str = va_arg(formatPtr, char *);
