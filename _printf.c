@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 				len += print_number(va_arg(formatPtr, int)) - 1;
 			else if (format[i + 1] == 'b'){
-				unsigned_to_binar(va_arg(formatPtr, unsigned int));
+				unsigned_to_binary(va_arg(formatPtr, unsigned int));
 				i++;
 			}
 			else
