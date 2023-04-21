@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * _printf - prints whatever u like to the stdout
+ *_printf - prints whatever u like to the stdout
  *
- * @format: the main string that tells u what to print
- * @...: additional arguments
+ *@format: the main string that tells u what to print
+ *@...: additional arguments
  *
- * Return: length of what was printed
+ *Return: length of what was printed
  */
 int _printf(const char *format, ...)
 {
@@ -38,7 +38,8 @@ int _printf(const char *format, ...)
 				_putchar('%');
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 				len += print_number(va_arg(formatPtr, int)) - 1;
-			else if (format[i + 1] == 'b'){
+			else if (format[i + 1] == 'b')
+			{
 				unsigned_to_binary(va_arg(formatPtr, unsigned int));
 				len++;
 				i++;
@@ -48,10 +49,13 @@ int _printf(const char *format, ...)
 				_putchar('%');
 				i--;
 			}
+
 			i++;
 		}
+
 		len++;
 	}
+
 	va_end(formatPtr);
 	return (len);
 }
