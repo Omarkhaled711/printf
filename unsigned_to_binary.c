@@ -23,7 +23,7 @@ void unsigned_to_binary(unsigned int num)
 		while (count >= 0)
 		{
 			_putchar(result[count--]);
-			len++;
+
 		}
 	}
 	else

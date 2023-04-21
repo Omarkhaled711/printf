@@ -42,8 +42,6 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'b')
 			{
 				u = (va_arg(formatPtr, unsigned int));
-				if(u == NULL)
-					u = "(NULL)";
 				unsigned_to_binary(u);
 			}
 			else
