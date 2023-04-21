@@ -6,7 +6,7 @@
  * Return: void
  *
  */
-int unsigned_to_binary(unsigned int num)
+void unsigned_to_binary(unsigned int num)
 {
 	
 	char result[sizeof(num) *8];
