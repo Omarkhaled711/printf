@@ -11,7 +11,7 @@ void unsigned_to_binary(unsigned int num)
 	int count = 0;
 	while (num)
 	{
-		result[count++] = ((num &1 == 1) ? '1' : '0');
+		result[count++] = (((num &1) == 1) ? '1' : '0');
 		num >>= 1;
 	}
 

@@ -40,6 +40,7 @@ int _printf(const char *format, ...)
 				len += print_number(va_arg(formatPtr, int)) - 1;
 			else if (format[i + 1] == 'b'){
 				unsigned_to_binary(va_arg(formatPtr, unsigned int));
+				len++;
 				i++;
 			}
 			else
