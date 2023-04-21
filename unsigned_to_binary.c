@@ -4,9 +4,11 @@
  *
  * @num: input
  * Return: void
+ *
  */
-void unsigned_to_binary(unsigned int num)
+int unsigned_to_binary(unsigned int num)
 {
+	
 	char result[sizeof(num) *8];
 	int count = 0;
 	while (num)
@@ -21,6 +23,7 @@ void unsigned_to_binary(unsigned int num)
 		while (count >= 0)
 		{
 			_putchar(result[count--]);
+			len++;
 		}
 	}
 	else

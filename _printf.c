@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 	va_list formatPtr;
 	int i, len = 0;
 	char *str;
+	unsigned int u;
 
 	va_start(formatPtr, format);
 	if (format == NULL)
@@ -40,9 +41,10 @@ int _printf(const char *format, ...)
 				len += print_number(va_arg(formatPtr, int)) - 1;
 			else if (format[i + 1] == 'b')
 			{
-				unsigned_to_binary(va_arg(formatPtr, unsigned int));
-				len++;
-				i++;
+				u = (va_arg(formatPtr, unsigned int));
+				if(u == NULL)
+					u = "(NULL)";
+				unsigned_to_binary(u);
 			}
 			else
 			{
