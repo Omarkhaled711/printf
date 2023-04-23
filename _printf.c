@@ -15,7 +15,9 @@ int _printf(const char *format, ...)
 	char *str;
 
 	va_start(formatPtr, format);
-	for (i = 0; format != NULL && format[i]; i++)
+	if (format == NULL)
+		return (-1);
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] != '%')
 			_putchar(format[i]);
