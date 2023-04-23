@@ -41,6 +41,8 @@ int _printf(const char *format, ...)
 			_putchar('%');
 			i++;
 		}
+		else
+			_putchar('%');
 		len++;
 	}
 	va_end(formatPtr);
