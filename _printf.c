@@ -15,12 +15,14 @@ int _printf(const char *format, ...)
 	char *str;
 
 	va_start(formatPtr, format);
-	if (format == NULL || (format[0] == '%' && format[1] == 0))
+	if (format == NULL)
 		return (-1);
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] != '%')
 			_putchar(format[i]);
+		else if (format[i + 1] == 0)
+			return (-1);
 		else if (format[i + 1] == 'c')
 		{
 			_putchar(va_arg(formatPtr, int));
@@ -32,6 +34,11 @@ int _printf(const char *format, ...)
 			if (str == NULL)
 				str = "(null)";
 			len += _puts(str) - 1;
+			i++;
+		}
+		else if (format[i + 1] == '%')
+		{
+			_putchar('%');
 			i++;
 		}
 		len++;
