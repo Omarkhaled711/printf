@@ -7,13 +7,13 @@
  */
 void string_reverse(char *str)
 {
-	int len;
+	int len, i;
 	char temp;
 
 	for (len = 0; str[len]; len++)
 	{
 	}
-	for (int i = 0; i < len / 2; i++)
+	for (i = 0; i < len / 2; i++)
 	{
 		temp = str[i];
 		str[i] = str[len - i - 1];
