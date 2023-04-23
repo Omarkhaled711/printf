@@ -21,28 +21,30 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 			_putchar(format[i]);
-		else if (format[i + 1] == 0)
-			return (-1);
-		else if (format[i + 1] == 'c')
-		{
-			_putchar(va_arg(formatPtr, int));
-			i++;
-		}
-		else if (format[i + 1] == 's')
-		{
-			str = va_arg(formatPtr, char *);
-			if (str == NULL)
-				str = "(null)";
-			len += _puts(str) - 1;
-			i++;
-		}
-		else if (format[i + 1] == '%')
-		{
-			_putchar('%');
-			i++;
-		}
 		else
-			_putchar('%');
+		{
+			if (format[i + 1] == 0)
+				return (-1);
+			else if (format[i + 1] == 'c')
+				_putchar(va_arg(formatPtr, int));
+			else if (format[i + 1] == 's')
+			{
+				str = va_arg(formatPtr, char *);
+				if (str == NULL)
+					str = "(null)";
+				len += _puts(str) - 1;
+			}
+			else if (format[i + 1] == '%')
+				_putchar('%');
+			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+				len += print_number(va_arg(formatPtr, int)) - 1;
+			else
+			{
+				_putchar('%');
+				i--;
+			}
+			i++;
+		}
 		len++;
 	}
 	va_end(formatPtr);
