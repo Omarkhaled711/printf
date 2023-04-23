@@ -29,7 +29,8 @@ void string_reverse(char *str)
 int print_number(int n)
 {
 	char str[18];
-	int i = 0, rem, num = n, len = 0;
+	int i = 0, rem, len = 0;
+	long num = n;
 
 	if (n == 0)
 	{
@@ -38,16 +39,16 @@ int print_number(int n)
 	}
 	if (num < 0)
 	{
-		n = n * -1;
+		num = num * -1;
 	}
-	while (n != 0)
+	while (num != 0)
 	{
-		rem = (n % 10) + '0';
+		rem = (num % 10) + '0';
 		str[i] = rem;
 		i++;
-		n = n / 10;
+		num = num / 10;
 	}
-	if (num < 0)
+	if (n < 0)
 	{
 		str[i] = '-';
 		i++;
