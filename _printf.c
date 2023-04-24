@@ -13,7 +13,6 @@
 void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 {
 	char *str;
-	unsigned int u;
 
 	if (format[(*i) + 1] == 'c')
 		_putchar(va_arg(formatPtr, int));
@@ -29,10 +28,15 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i')
 		*len += print_number(va_arg(formatPtr, int)) - 1;
 	else if (format[(*i) + 1] == 'b')
-	{
-		u = (va_arg(formatPtr, unsigned int));
-		*len += unsigned_to_binary(u) - 1;
-	}
+		*len += unsigned_to_binary(va_arg(formatPtr, unsigned int)) - 1;
+	else if (format[(*i) + 1] == 'u')
+		*len += print_unsignedNum(va_arg(formatPtr, unsigned int)) - 1;
+	else if (format[(*i) + 1] == 'o')
+		*len += print_octal(va_arg(formatPtr, unsigned int)) - 1;
+	else if (format[(*i) + 1] == 'x')
+		*len += print_hex(va_arg(formatPtr, unsigned int)) - 1;
+	else if (format[(*i) + 1] == 'X')
+		*len += print_HEX(va_arg(formatPtr, unsigned int)) - 1;
 	else
 	{
 		_putchar('%');
