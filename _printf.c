@@ -37,6 +37,13 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 		*len += print_hex(va_arg(formatPtr, unsigned int)) - 1;
 	else if (format[(*i) + 1] == 'X')
 		*len += print_HEX(va_arg(formatPtr, unsigned int)) - 1;
+	else if (format[(*i) + 1] == 'S')
+	{
+		str = va_arg(formatPtr, char *);
+		if (str == NULL)
+			str = "(null)";
+		*len += puts_with_HEX(str) - 1;
+	}
 	else
 	{
 		_putchar('%');

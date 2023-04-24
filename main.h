@@ -14,4 +14,5 @@ int print_octal(unsigned int num);
 int print_unsignedNum(unsigned int num);
 int print_hex(unsigned int num);
 int print_HEX(unsigned int num);
+int puts_with_HEX(char *str);
 #endif
