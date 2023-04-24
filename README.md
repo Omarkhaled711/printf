@@ -8,3 +8,10 @@ This is a part of alx projects, Creating our own printf function.
 		- c
 		- s
 		- %
+		- d
+		- i
+		- b (unsigned int to binary)
+		- u
+		- x
+		- X
+		- o
