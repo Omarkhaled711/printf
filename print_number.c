@@ -33,3 +33,17 @@ int print_number(int n, int flag)
 	len++;
 	return (len);
 }
+/**
+ * print_integer - prints an integer
+ *
+ * @formatPtr: pointer to the argument list
+ * @len: pointer to the length of what was printed
+ * @i: the index of the current format specifier
+ * @flag: checks + or space flags
+ */
+void print_integer(va_list formatPtr, int *len, int *i, char flag)
+{
+	*len += print_number(va_arg(formatPtr, int), flag) - 1;
+	if (flag != 0)
+		(*i)++;
+}
