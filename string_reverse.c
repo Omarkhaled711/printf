@@ -5,18 +5,19 @@
  * @str: the string to reverse
  * Return: void
  */
-void string_reverse(char *str)
+int string_reverse(char *str)
 {
 	int len, i;
-	char temp;
+	char str2[1500];
 
 	for (len = 0; str[len]; len++)
 	{
 	}
-	for (i = 0; i < len / 2; i++)
+	for (i = 0; i < len; i++)
 	{
-		temp = str[i];
-		str[i] = str[len - i - 1];
-		str[len - i - 1] = temp;
+		str2[i] = str[len -  i - 1];
 	}
+	str2[len] = 0;
+	_puts(str2);
+	return (len);
 }

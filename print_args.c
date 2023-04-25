@@ -64,12 +64,18 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 		print_integer(formatPtr, len, i, spe);
 	else if ((spe == '#') && (second == 'o' || second == 'x' || second == 'X'))
 		print_unsign(formatPtr, len, second, i, spe);
-	else if (spe == 'S')
+	else if (spe == 'S' || spe == 'r')
 	{
 		str = va_arg(formatPtr, char *);
 		if (str == NULL)
+		{
+			spe = 'S';
 			str = "(null)";
-		*len += puts_with_HEX(str);
+		}
+		if (spe == 'S')
+			*len += puts_with_HEX(str) - 1;
+		else
+			*len += string_reverse(str) - 1;
 	}
 	else
 	{

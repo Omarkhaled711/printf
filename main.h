@@ -20,6 +20,6 @@ int print_HEX(unsigned int num, char flag);
 int puts_with_HEX(char *str);
 int check_int_flags(char flag, char spec);
 int check_unsignedFlags(char flag, char spec);
-void string_reverse(char *str);
+int string_reverse(char *str);
 
 #endif
