@@ -2,14 +2,15 @@
 
 /**
  * print_Address - prints number in hex
- * @address: the address print
+ * @ptr: the address print
  * @flag: to write 0x at the front of the address
  * Return: len
  */
-int print_Address(long address, int flag)
+int print_Address(void *ptr, int flag)
 {
 	int len = 0;
 	char hex_digits[] = "0123456789abcdef";
+	unsigned long address = (unsigned long)ptr;
 
 	if (flag != 0)
 	{
@@ -20,7 +21,7 @@ int print_Address(long address, int flag)
 	flag = 0;
 	if (address >= 16)
 	{
-		len += print_Address(address / 16, flag);
+		len += print_Address((void *)(address / 16), flag);
 	}
 	_putchar(hex_digits[address % 16]);
 	len++;
