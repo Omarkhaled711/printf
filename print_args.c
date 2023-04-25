@@ -13,9 +13,9 @@ void print_unsign(va_list formatPtr, int *len, char spec, char flag)
 	unsigned long num = va_arg(formatPtr, long int);
 
 	if (spec == 'b')
-		*len += unsigned_to_binary(num);
+		*len += unsigned_to_binary(num) - 1;
 	else if (spec == 'u')
-		*len += print_unsignedNum(num, flag);
+		*len += print_unsignedNum(num, flag) - 1;
 	else if (spec == 'o')
 	{
 		*len += print_octal(num, flag) - 1;
