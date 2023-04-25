@@ -6,34 +6,27 @@
  * @formatPtr: pointer to the argument list
  * @len: pointer to the length of what was printed
  * @spec: specifier
- * @i: the index of the current format specifier
  * @flag: checks # flag
  */
-void print_unsign(va_list formatPtr, int *len, char spec, int *i, char flag)
+void print_unsign(va_list formatPtr, int *len, char spec, char flag)
 {
-	unsigned int num = va_arg(formatPtr, unsigned int);
+	unsigned long num = va_arg(formatPtr, long int);
 
 	if (spec == 'b')
 		*len += unsigned_to_binary(num);
 	else if (spec == 'u')
-		*len += print_unsignedNum(num);
+		*len += print_unsignedNum(num, flag);
 	else if (spec == 'o')
 	{
 		*len += print_octal(num, flag) - 1;
-		if (flag == '#')
-			(*i)++;
 	}
 	else if (spec == 'x')
 	{
 		*len += print_hex(num, flag) - 1;
-		if (flag == '#')
-			(*i)++;
 	}
 	else if (spec == 'X')
 	{
 		*len += print_HEX(num, flag) - 1;
-		if (flag == '#')
-			(*i)++;
 	}
 }
 /**
@@ -46,10 +39,13 @@ void print_unsign(va_list formatPtr, int *len, char spec, int *i, char flag)
  */
 void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 {
-	char spe = format[(*i) + 1], second;
+	char spe;
+	int width = 0, flags = 0;
 	char *str;
 
-	second = spe != 0 ? format[(*i) + 2] : 0;
+	extract_flags(format, i, &flags);
+	spe = format[(*i) + 1];
+	extract_width(format, i, &width);
 	if (spe == 'c')
 		_putchar(va_arg(formatPtr, int));
 	else if (spe == 's')
@@ -57,13 +53,9 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	else if (spe == '%')
 		_putchar('%');
 	else if (spe == 'd' || spe == 'i')
-		print_integer(formatPtr, len, i, 0);
+		print_integer(formatPtr, len, flags);
 	else if (spe == 'b' || spe == 'u' || spe == 'o' || spe == 'x' || spe == 'X')
-		print_unsign(formatPtr, len, spe, i, 0);
-	else if ((spe == '+' || spe == ' ') && (second == 'd' || second == 'i'))
-		print_integer(formatPtr, len, i, spe);
-	else if ((spe == '#') && (second == 'o' || second == 'x' || second == 'X'))
-		print_unsign(formatPtr, len, second, i, spe);
+		print_unsign(formatPtr, len, spe, flags);
 	else if (spe == 'p')
 		(*len) += print_Address(va_arg(formatPtr, void *), 1) - 1;
 	else if (spe == 'S' || spe == 'r')

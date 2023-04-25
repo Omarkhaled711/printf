@@ -7,14 +7,28 @@
  * @flag: checks for + or space
  * Return: int
  */
-int print_number(int n, int flag)
+int print_number(long n, int flag)
 {
 	int len = 0;
-	long num = n;
+	long num;
 
-	if (flag != 0 && n >= 0)
+	if ((flag >> 6) & 1)
 	{
-		_putchar(flag);
+		n = (short) n;
+	}
+	else if (!((flag >> 5) & 1))
+	{
+		n = (int) n;
+	}
+	num = n;
+	if (((flag >> 1) & 1) && n >= 0)
+	{
+		_putchar('+');
+		len++;
+	}
+	else if (((flag >> 2) & 1) && n >= 0)
+	{
+		_putchar(' ');
 		len++;
 	}
 	flag = 0;
@@ -38,12 +52,9 @@ int print_number(int n, int flag)
  *
  * @formatPtr: pointer to the argument list
  * @len: pointer to the length of what was printed
- * @i: the index of the current format specifier
  * @flag: checks + or space flags
  */
-void print_integer(va_list formatPtr, int *len, int *i, char flag)
+void print_integer(va_list formatPtr, int *len, int flag)
 {
-	*len += print_number(va_arg(formatPtr, int), flag) - 1;
-	if (flag != 0)
-		(*i)++;
+	*len += print_number(va_arg(formatPtr, long), flag) - 1;
 }

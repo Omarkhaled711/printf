@@ -7,11 +7,20 @@
  * @flag: checks for '#'
  * Return: length
  */
-int print_octal(unsigned int num, char flag)
+int print_octal(unsigned long num, int flag)
 {
 	int len = 0;
 
-	if (flag == '#' && num > 0)
+	if ((flag >> 6) & 1)
+	{
+		num = (unsigned short) num;
+	}
+	else if (!((flag >> 5) & 1))
+	{
+		num = (unsigned int) num;
+	}
+
+	if (((flag >> 3) & 1) && num > 0)
 	{
 		_putchar('0');
 		len++;
