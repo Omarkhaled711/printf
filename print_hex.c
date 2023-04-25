@@ -58,7 +58,7 @@ int print_HEX(unsigned long num, int flag)
 	if (((flag >> 3) & 1) && num > 0)
 	{
 		_putchar('0');
-		_putchar('x');
+		_putchar('X');
 		len += 2;
 	}
 
