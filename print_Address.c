@@ -8,9 +8,14 @@
  */
 int print_Address(void *ptr, int flag)
 {
-	int len = 0;
 	char hex_digits[] = "0123456789abcdef";
 	unsigned long address = (unsigned long)ptr;
+	int len = 0;
+
+	if (ptr == NULL)
+	{
+		return (_puts("(nil)"));
+	}
 
 	if (flag != 0)
 	{

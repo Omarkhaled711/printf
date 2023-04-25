@@ -65,7 +65,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	else if ((spe == '#') && (second == 'o' || second == 'x' || second == 'X'))
 		print_unsign(formatPtr, len, second, i, spe);
 	else if (spe == 'p')
-		len += print_Address(va_arg(formatPtr, void *), 1) - 1;
+		(*len) += print_Address(va_arg(formatPtr, void *), 1) - 1;
 	else if (spe == 'S' || spe == 'r')
 	{
 		str = va_arg(formatPtr, char *);
