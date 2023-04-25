@@ -25,7 +25,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	}
 	else if (format[(*i) + 1] == '%')
 		_putchar('%');
-	else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i' || check_int_flags(format[(*i) + 1], format[(*i) + 2]))
+	else if (format[(*i) + 1] == 'd' || format[(*i) + 1] == 'i' || ((format[(*i) + 2] == 'd' || format[(*i) + 2] == 'i') && check_int_flags(format[(*i) + 1], format[(*i) + 2])))
 	{
 		flag = check_int_flags(format[(*i) + 1], format[(*i) + 2]);
 		*len += print_number(va_arg(formatPtr, int), flag) - 1;
