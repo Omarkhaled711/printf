@@ -10,6 +10,7 @@
 int print_number(int n, int flag)
 {
 	int len = 0;
+	long num = n;
 
 	if (flag != 0 && n >= 0)
 	{
@@ -17,18 +18,18 @@ int print_number(int n, int flag)
 		len++;
 	}
 	flag = 0;
-	if (n < 0)
+	if (num < 0)
 	{
 		_putchar('-');
-		n = -n;
+		num = -num;
 		len++;
 	}
-	if (n / 10)
+	if (num / 10)
 	{
-		len += print_number(n / 10, flag);
+		len += print_number(num / 10, flag);
 	}
 
-	_putchar((n % 10) + '0');
+	_putchar((num % 10) + '0');
 	len++;
 	return (len);
 }
