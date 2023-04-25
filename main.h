@@ -21,5 +21,5 @@ int puts_with_HEX(char *str);
 int check_int_flags(char flag, char spec);
 int check_unsignedFlags(char flag, char spec);
 int string_reverse(char *str);
-
+int print_Address(long address, int flag);
 #endif
