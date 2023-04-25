@@ -11,7 +11,7 @@ int print_hex(unsigned int num, int flag)
 	int len = 0;
 	char hex_digits[] = "0123456789abcdef";
 
-	if (flag == '#')
+	if (flag == '#' && num > 0)
 	{
 		_putchar('0');
 		_putchar('x');
@@ -37,7 +37,7 @@ int print_HEX(unsigned int num, int flag)
 	int len = 0;
 	char hex_digits[] = "0123456789ABCDEF";
 
-	if (flag == '#')
+	if (flag == '#' && num > 0)
 	{
 		_putchar('0');
 		_putchar('X');

@@ -11,7 +11,7 @@ int print_octal(unsigned int num, int flag)
 {
 	int len = 0;
 
-	if (flag == '#')
+	if (flag == '#' && num > 0)
 	{
 		_putchar('0');
 		len++;
