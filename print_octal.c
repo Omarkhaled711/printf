@@ -7,7 +7,7 @@
  * @flag: checks for '#'
  * Return: length
  */
-int print_octal(unsigned int num, int flag)
+int print_octal(unsigned int num, char flag)
 {
 	int len = 0;
 

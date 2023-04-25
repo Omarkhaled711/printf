@@ -2,7 +2,7 @@
 
 /**
  * puts_with_HEX - Non printable characters, are printed this way:
- * \x, followed by the ASCII code value in hexadecimal 
+ * \x, followed by the ASCII code value in hexadecimal
  * (upper case - always 2 characters)
  *
  * @str: string

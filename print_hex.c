@@ -6,7 +6,7 @@
  * @flag: checks for # flag
  * Return: len
  */
-int print_hex(unsigned int num, int flag)
+int print_hex(unsigned int num, char flag)
 {
 	int len = 0;
 	char hex_digits[] = "0123456789abcdef";
@@ -32,7 +32,7 @@ int print_hex(unsigned int num, int flag)
  * @flag: checks for #flag
  * Return: len
  */
-int print_HEX(unsigned int num, int flag)
+int print_HEX(unsigned int num, char flag)
 {
 	int len = 0;
 	char hex_digits[] = "0123456789ABCDEF";
