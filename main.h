@@ -27,4 +27,5 @@ void extract_width(const char *format, int *i, int *width);
 void extract_precision(const char *format, int *i, int *precision);
 int _atoi(const char *s);
 int is_digit(char c);
+int rot13(const char *s);
 #endif

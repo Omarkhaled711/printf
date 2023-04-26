@@ -52,7 +52,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 		print_unsign(formatPtr, len, spe, flags);
 	else if (spe == 'p')
 		(*len) += print_Address(va_arg(formatPtr, void *), 1) - 1;
-	else if (spe == 'S' || spe == 'r')
+	else if (spe == 'S' || spe == 'r' || 'R')
 	{
 		str = va_arg(formatPtr, char *);
 		if (str == NULL)
@@ -62,8 +62,10 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 		}
 		if (spe == 'S')
 			*len += puts_with_HEX(str) - 1;
-		else
+		else if (spe == 'r')
 			*len += string_reverse(str) - 1;
+		else if (spe == 'R')
+			*len += rot13(str) - 1;
 	}
 	else
 	{
