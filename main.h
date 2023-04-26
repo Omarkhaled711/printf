@@ -9,7 +9,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int _puts(char *str);
-void print_string(va_list formatPtr, int *len, int width);
+void print_string(va_list formatPtr, int *len);
 int print_number(long n, int flag, int width);
 void print_integer(va_list formatPtr, int *len, int flag, int width);
 int unsigned_to_binary(unsigned int num);
