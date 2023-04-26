@@ -44,7 +44,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	if (spe == 'c')
 		_putchar(va_arg(formatPtr, int));
 	else if (spe == 's')
-		print_string(formatPtr, len);
+		print_string(formatPtr, len, width);
 	else if (spe == '%')
 		_putchar('%');
 	else if (spe == 'd' || spe == 'i')
