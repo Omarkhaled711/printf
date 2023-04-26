@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <limits.h>
 /**
  * print_number - prints an integer using _putchar
  *
@@ -13,13 +13,11 @@ int print_number(long n, int flag)
 	long num;
 
 	if ((flag >> 6) & 1)
-	{
 		n = (short) n;
-	}
 	else if (!((flag >> 5) & 1))
-	{
 		n = (int) n;
-	}
+	else if (n == LONG_MIN)
+		return (_puts("-9223372036854775808"));
 	num = n;
 	if (((flag >> 1) & 1) && n >= 0)
 	{

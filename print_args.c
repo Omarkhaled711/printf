@@ -17,17 +17,11 @@ void print_unsign(va_list formatPtr, int *len, char spec, char flag)
 	else if (spec == 'u')
 		*len += print_unsignedNum(num, flag) - 1;
 	else if (spec == 'o')
-	{
 		*len += print_octal(num, flag) - 1;
-	}
 	else if (spec == 'x')
-	{
 		*len += print_hex(num, flag) - 1;
-	}
 	else if (spec == 'X')
-	{
 		*len += print_HEX(num, flag) - 1;
-	}
 }
 /**
  * print_arg - handles the else part of the _printf function
