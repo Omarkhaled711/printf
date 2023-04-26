@@ -59,7 +59,7 @@ void extract_width(const char *format, int *i, int *width)
 {
 	if (is_digit(format[*i + 1]))
 	{
-		*width = _atoi(format + *i + 1);
+		*width = _atoi(format + *i);
 		while (is_digit(format[*i + 1]))
 			(*i)++;
 	}
