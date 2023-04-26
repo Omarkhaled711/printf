@@ -10,7 +10,7 @@
  */
 void print_unsign(va_list formatPtr, int *len, char spec, char flag)
 {
-	unsigned long num = va_arg(formatPtr, long int);
+	unsigned long num = va_arg(formatPtr, unsigned long);
 
 	if (spec == 'b')
 		*len += unsigned_to_binary(num) - 1;
@@ -44,8 +44,8 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	char *str;
 
 	extract_flags(format, i, &flags);
-	spe = format[(*i) + 1];
 	extract_width(format, i, &width);
+	spe = format[(*i) + 1];
 	if (spe == 'c')
 		_putchar(va_arg(formatPtr, int));
 	else if (spe == 's')
