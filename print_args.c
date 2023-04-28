@@ -53,7 +53,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 		print_unsign(formatPtr, len, spe, flags, width);
 	else if (spe == 'p')
 		(*len) += print_Address(va_arg(formatPtr, void *), 1) - 1;
-	else if (spe == 'S' || spe == 'r' || 'R')
+	else if (spe == 'S' || spe == 'r' || spe == 'R')
 	{
 		str = va_arg(formatPtr, char *);
 		if (str == NULL)
