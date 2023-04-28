@@ -39,7 +39,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	char *str;
 
 	extract_flags(format, i, &flags);
-	extract_width(format, i, &width);
+	extract_width(format, i, &width, formatPtr, flags);
 	spe = format[(*i) + 1];
 	if (spe == 'c')
 		_putchar(va_arg(formatPtr, int));

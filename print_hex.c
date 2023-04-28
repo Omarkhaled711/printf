@@ -39,7 +39,7 @@ int print_hex(unsigned long num, int flag, int width)
 		num = (unsigned int) num;
 	}
 	if (width > 0)
-		len += deal_width(count_hex_digits(num), width);
+		len += deal_width(count_hex_digits(num), width, &flag);
 	width = 0;
 	if (((flag >> 3) & 1) && num > 0)
 	{
@@ -77,7 +77,7 @@ int print_HEX(unsigned long num, int flag, int width)
 		num = (unsigned int) num;
 	}
 	if (width > 0)
-		len += deal_width(count_hex_digits(num), width);
+		len += deal_width(count_hex_digits(num), width, &flag);
 	width = 0;
 	if (((flag >> 3) & 1) && num > 0)
 	{

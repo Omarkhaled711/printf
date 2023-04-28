@@ -38,6 +38,9 @@ void extract_flags(const char *format, int *i, int *flags)
 			case 'h':
 				*flags |= 1 << 6;
 				break;
+			case '*':
+				*flags |= 1 << 7;
+				break;
 			default:
 				done = 1;
 				(*i)--;
@@ -52,12 +55,18 @@ void extract_flags(const char *format, int *i, int *flags)
  * @format: The format string to extract the width from
  * @i: A pointer to the current position in the format string
  * @width: A pointer to an integer to store the extracted width
- *
+ * @formatPtr: pointer to the argument list
+ * @flags: flags to check
  * Return: None
  */
-void extract_width(const char *format, int *i, int *width)
+void extract_width(const char *format, int *i, int *width,
+					va_list formatPtr, int flags)
 {
-	if (is_digit(format[*i + 1]))
+	if ((flags >> 7) & 1)
+	{
+		*width = va_arg(formatPtr, int);
+	}
+	else if (is_digit(format[*i + 1]))
 	{
 		*width = _atoi(format + *i);
 		while (is_digit(format[*i + 1]))

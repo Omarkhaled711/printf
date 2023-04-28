@@ -25,11 +25,12 @@ int _puts(char *str)
 void print_string(va_list formatPtr, int *len, int width)
 {
 	char *str = va_arg(formatPtr, char *);
+	int flags = 0;
 
 	if (str == NULL)
 		str = "(null)";
 	if (width > 0)
-		*len += deal_width(_strlen(str), width);
+		*len += deal_width(_strlen(str), width, &flags);
 	width = 0;
 	*len += _puts(str) - 1;
 }

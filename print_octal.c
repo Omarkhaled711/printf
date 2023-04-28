@@ -40,7 +40,7 @@ int print_octal(unsigned long num, int flag, int width)
 		num = (unsigned int) num;
 	}
 	if (width > 0)
-		len += deal_width(count_oct_digits(num), width);
+		len += deal_width(count_oct_digits(num), width, &flag);
 	width = 0;
 	if (((flag >> 3) & 1) && num > 0)
 	{

@@ -23,11 +23,12 @@ int check_unsignedFlags(char flag, char spec);
 int string_reverse(char *str);
 int print_Address(void *address, int flag);
 void extract_flags(const char *format, int *i, int *flags);
-void extract_width(const char *format, int *i, int *width);
+void extract_width(const char *format, int *i, int *width,
+		va_list formatPtr, int flags);
 void extract_precision(const char *format, int *i, int *precision);
 int _atoi(const char *s);
 int is_digit(char c);
 int rot13(const char *s);
 int _strlen(char *s);
-int deal_width(int len, int width);
+int deal_width(int len, int width, int *flag);
 #endif

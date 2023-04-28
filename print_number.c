@@ -49,7 +49,7 @@ int print_number(long n, int flag, int width)
 		return (_puts("-9223372036854775808"));
 	num = n;
 	if (width > 0)
-		len += deal_width(count_digits(num), width);
+		len += deal_width(count_digits(num), width, &flag);
 	width = 0;
 	if (((flag >> 1) & 1) && n >= 0)
 	{

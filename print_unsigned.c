@@ -43,7 +43,7 @@ int print_unsignedNum(unsigned long num, int flag, int width)
 		num = (unsigned int) num;
 	}
 	if (width > 0)
-		len += deal_width(count_undigits(num), width);
+		len += deal_width(count_undigits(num), width, &flag);
 	width = 0;
 
 	flag = 0;
