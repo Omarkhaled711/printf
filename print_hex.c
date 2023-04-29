@@ -39,8 +39,10 @@ int print_hex(unsigned long num, int flag, int width)
 		num = (unsigned int) num;
 	}
 	if (width > 0)
+	{
 		len += deal_width(count_hex_digits(num), width, &flag);
-	width = 0;
+		width = 0;
+	}
 	if (((flag >> 3) & 1) && num > 0)
 	{
 		_putchar('0');
@@ -54,6 +56,8 @@ int print_hex(unsigned long num, int flag, int width)
 	}
 	_putchar(hex_digits[num % 16]);
 	len++;
+	if (width < 0)
+		len += deal_width(count_hex_digits(num), -width, &flag);
 	return (len);
 }
 /**
@@ -77,8 +81,10 @@ int print_HEX(unsigned long num, int flag, int width)
 		num = (unsigned int) num;
 	}
 	if (width > 0)
+	{
 		len += deal_width(count_hex_digits(num), width, &flag);
-	width = 0;
+		width = 0;
+	}
 	if (((flag >> 3) & 1) && num > 0)
 	{
 		_putchar('0');
@@ -93,5 +99,7 @@ int print_HEX(unsigned long num, int flag, int width)
 	}
 	_putchar(hex_digits[num % 16]);
 	len++;
+	if (width < 0)
+		len += deal_width(count_hex_digits(num), -width, &flag);
 	return (len);
 }

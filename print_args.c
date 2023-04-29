@@ -42,7 +42,7 @@ void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 	extract_width(format, i, &width, formatPtr, flags);
 	spe = format[(*i) + 1];
 	if (spe == 'c')
-		_putchar(va_arg(formatPtr, int));
+		(*len) += print_char(va_arg(formatPtr, int), width) - 1;
 	else if (spe == 's')
 		print_string(formatPtr, len, width);
 	else if (spe == '%')

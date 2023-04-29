@@ -7,6 +7,7 @@
 
 void print_arg(va_list formatPtr, const char *format, int *i, int *len);
 int _putchar(char c);
+int print_char(char c, int width);
 int _printf(const char *format, ...);
 int _puts(char *str);
 void print_string(va_list formatPtr, int *len, int width);

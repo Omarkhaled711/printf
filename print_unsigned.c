@@ -43,9 +43,10 @@ int print_unsignedNum(unsigned long num, int flag, int width)
 		num = (unsigned int) num;
 	}
 	if (width > 0)
+	{
 		len += deal_width(count_undigits(num), width, &flag);
-	width = 0;
-
+		width = 0;
+	}
 	flag = 0;
 	if (num >= 10)
 	{
@@ -53,5 +54,7 @@ int print_unsignedNum(unsigned long num, int flag, int width)
 	}
 	_putchar('0' + (num % 10));
 	len++;
+	if (width < 0)
+		len += deal_width(count_undigits(num), -width, &flag);
 	return (len);
 }
