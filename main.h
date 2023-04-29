@@ -32,4 +32,9 @@ int is_digit(char c);
 int rot13(const char *s);
 int _strlen(char *s);
 int deal_width(int len, int width, int *flag);
+int count_hex_digits(unsigned long num);
+int count_oct_digits(unsigned long num);
+int count_undigits(unsigned long num);
+
+
 #endif

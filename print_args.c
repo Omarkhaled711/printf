@@ -9,20 +9,37 @@
  * @flag: checks flag
  * @width: width field
  */
-void print_unsign(va_list formatPtr, int *len, char spec, char flag, int width)
+void print_unsign(va_list formatPtr, int *len, char spec, int flag, int width)
 {
 	unsigned long num = va_arg(formatPtr, unsigned long);
 
 	if (spec == 'b')
 		*len += unsigned_to_binary(num) - 1;
 	else if (spec == 'u')
+	{
 		*len += print_unsignedNum(num, flag, width) - 1;
+		if (width < 0)
+			*len += deal_width(count_undigits(num), -width, &flag);
+	}
 	else if (spec == 'o')
+	{
 		*len += print_octal(num, flag, width) - 1;
+		if (width < 0)
+			*len += deal_width(count_oct_digits(num), -width, &flag);
+	}
 	else if (spec == 'x')
+	{
 		*len += print_hex(num, flag, width) - 1;
+		if (width < 0)
+			*len += deal_width(count_hex_digits(num), -width, &flag);
+	}
+
 	else if (spec == 'X')
+	{
 		*len += print_HEX(num, flag, width) - 1;
+		if (width < 0)
+			*len += deal_width(count_hex_digits(num), -width, &flag);
+	}
 }
 /**
  * print_arg - handles the else part of the _printf function

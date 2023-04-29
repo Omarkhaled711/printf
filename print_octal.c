@@ -56,8 +56,5 @@ int print_octal(unsigned long num, int flag, int width)
 	}
 	_putchar('0' + (num % 8));
 	len++;
-	if (width < 0)
-		len += deal_width(count_oct_digits(num), -width, &flag);
-
 	return (len);
 }

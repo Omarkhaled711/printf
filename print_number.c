@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 #include <limits.h>
 
 /**
@@ -75,8 +74,6 @@ int print_number(long n, int flag, int width)
 		len += print_number(num / 10, flag, width);
 	_putchar((num % 10) + '0');
 	len++;
-	if (width < 0)
-		len += deal_width(count_digits(num), -width, &flag);
 	return (len);
 }
 /**
@@ -89,5 +86,9 @@ int print_number(long n, int flag, int width)
  */
 void print_integer(va_list formatPtr, int *len, int flag, int width)
 {
-	*len += print_number(va_arg(formatPtr, long), flag, width) - 1;
+	long num = va_arg(formatPtr, long);
+	*len += print_number(num, flag, width) - 1;
+	if (width < 0)
+		*len += deal_width(count_digits(num), -width, &flag);
+
 }
