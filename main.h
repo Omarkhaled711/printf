@@ -26,7 +26,7 @@ int print_Address(void *address, int flag);
 void extract_flags(const char *format, int *i, int *flags);
 void extract_width(const char *format, int *i, int *width,
 		va_list formatPtr, int flags);
-void extract_precision(const char *format, int *i, int *precision);
+void check_precision(int *width, int *flags);
 int _atoi(const char *s);
 int is_digit(char c);
 int rot13(const char *s);

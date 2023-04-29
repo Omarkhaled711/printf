@@ -51,12 +51,12 @@ void print_unsign(va_list formatPtr, int *len, char spec, int flag, int width)
  */
 void print_arg(va_list formatPtr, const char *format, int *i, int *len)
 {
-	char spe;
-	int width = 0, flags = 0;
+	int spe, width = 0, flags = 0;
 	char *str;
 
 	extract_flags(format, i, &flags);
 	extract_width(format, i, &width, formatPtr, flags);
+	check_precision(&width, &flags);
 	spe = format[(*i) + 1];
 	if (spe == 'c')
 		(*len) += print_char(va_arg(formatPtr, int), width) - 1;

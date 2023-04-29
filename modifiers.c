@@ -17,7 +17,7 @@ void extract_flags(const char *format, int *i, int *flags)
 		(*i)++;
 		switch (format[*i])
 		{
-			case '-':
+			case '.':
 				*flags |= 1 << 0;
 				break;
 			case '+':
@@ -75,26 +75,25 @@ void extract_width(const char *format, int *i, int *width,
 }
 
 /**
- * extract_precision - Extracts the precision from a format string
+ * check_precision - checks the precision from a format string
  *
- * @format: The format string to extract the precision from
- * @i: A pointer to the current position in the format string
- * @precision: A pointer to an integer to store the extracted precision
- *
+ * @width: The width (the precision)
+ * @flags: the flags
  * Return: None
  */
-void extract_precision(const char *format, int *i, int *precision)
+void check_precision(int *width, int *flags)
 {
-	if (format[*i + 1] == '.')
+	if (((*flags >> 0) & 1) && *width > 0)
 	{
-		(*i)++;
-		if (is_digit(format[*i + 1]))
+		*flags |= 1 << 4;
+
+		if ((*flags >> 1) & 1)
 		{
-			*precision = _atoi(format + *i + 1);
-			while (is_digit(format[*i + 1]))
-				(*i)++;
+			*width += 1;
 		}
-		else
-			*precision = 0;
+		if ((*flags >> 2) & 1)
+		{
+			*width += 1;
+		}
 	}
 }
