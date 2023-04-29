@@ -18,3 +18,9 @@ This is a part of alx projects, Creating our own printf function.
 		-S (Non printable characters, are printed this way: \x, followed by the ASCII code value in hexadecimal (upper case - always 2 characters)
 		- space, +, # flags
 		-r (print the string in reverse)
+		-R (print the string in rot13)
+		-field width
+		-precision
+		-0 flag
+		- -ve flag
+
